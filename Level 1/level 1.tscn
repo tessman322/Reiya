@@ -21,6 +21,7 @@ albedo_color = Color( 0.0627451, 0.784314, 0.345098, 1 )
 
 [node name="Floor" type="CSGBox" parent="Meshes"]
 transform = Transform( 15, 0, 0, 0, 2, 0, 0, 0, 15, 0, 0, 0 )
+snap = 0.0001
 material = ExtResource( 2 )
 
 [node name="Wall2" type="CSGBox" parent="Meshes"]

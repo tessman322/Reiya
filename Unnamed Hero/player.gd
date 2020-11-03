@@ -18,8 +18,11 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("jump"):
 			velocity.y+=jumpforce
-	print(velocity.length())
 	velocity=move_and_slide(velocity,Vector3.UP)
+#	print(velocity)
+#	print(get_slide_collision(1))
+#	velocity=Vector3.ZERO
+#	print(velocity.sign())
 	
 
 func get_input_axis():
@@ -43,16 +46,31 @@ func get_input_axis():
 	return axis.normalized()
 
 func apply_friction(fr_amount):
+	var vel_sign_x:int
+	var vel_sign_z:int
 	if sqrt((velocity.x*velocity.x)+(velocity.z*velocity.z))>fr_amount:
-		velocity.x-=(velocity.sign().x)*fr_amount
-		velocity.z-=(velocity.sign().z)*fr_amount
+		if(velocity.x>-1) and velocity.x<1:
+			vel_sign_x=0
+		else:
+			vel_sign_x=velocity.sign().x
+		if(velocity.z>-1) and velocity.z<1:
+			vel_sign_z=0
+		else:
+			vel_sign_z=velocity.sign().z
+			
+		velocity.x-=vel_sign_x*fr_amount
+		velocity.z-=vel_sign_z*fr_amount
 	else:
 		velocity.x=0
 		velocity.z=0
-	
+	print(velocity.z)
+		
+		
 func apply_movement(axis,accl_amount):
+#	print(axis.z)
 	velocity.x+=axis.x*accl_amount
 	velocity.z+=axis.z*accl_amount
+#	print(accl_amount,'   ',axis.z,'   ',velocity.z)
 	if sqrt((velocity.x*velocity.x)+(velocity.z*velocity.z))>MAX_Speed:
 		if velocity.x==0:
 			velocity.z=axis.z*MAX_Speed
@@ -61,3 +79,4 @@ func apply_movement(axis,accl_amount):
 		else:
 			velocity.x=axis.x*MAX_Speed/1.414
 			velocity.z=axis.z*MAX_Speed/1.414
+#	print(velocity)
