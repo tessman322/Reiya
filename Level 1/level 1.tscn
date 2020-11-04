@@ -34,13 +34,8 @@ albedo_color = Color( 0.458824, 0.0627451, 0.0627451, 1 )
 transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 19.0753, -9.01175, 4.95556, -25.176 )
 
 [node name="Floor" type="CSGBox" parent="Meshes"]
-<<<<<<< HEAD
 transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
 operation = 2
-=======
-transform = Transform( 15, 0, 0, 0, 2, 0, 0, 0, 15, 0, 0, 0 )
-snap = 0.0001
->>>>>>> 2001bb7ef57a818f91dbf17e95933f1c2cd5116f
 material = ExtResource( 2 )
 
 [node name="Platform" type="CSGBox" parent="Meshes"]
