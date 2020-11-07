@@ -1,5 +1,8 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://textures/TactilePaving002_2K_Roughness.jpg" type="Texture" id=1]
 
 [resource]
 flags_unshaded = true
 albedo_color = Color( 0.505882, 0.243137, 0.0823529, 1 )
+albedo_texture = ExtResource( 1 )
