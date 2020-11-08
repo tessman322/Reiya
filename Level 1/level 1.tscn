@@ -37,10 +37,10 @@ rough = true
 [node name="Meshes" type="CSGCombiner" parent="."]
 
 [node name="Surface" type="CSGBox" parent="Meshes"]
-transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 19.0753, -9.01175, 4.95556, -24.8899 )
+transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 32.428, -9.01175, 4.95556, -32.0858 )
 
 [node name="Floor" type="CSGBox" parent="Meshes"]
-transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 34.9727, 0, 0, 0 )
 operation = 2
 material = ExtResource( 2 )
 
@@ -60,7 +60,7 @@ operation = 2
 material = SubResource( 3 )
 
 [node name="Floor" type="StaticBody" parent="."]
-transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 50, 0, 0, 0 )
+transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 34.9727, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 shape = SubResource( 4 )
@@ -118,13 +118,15 @@ shape = SubResource( 8 )
 remote_path = NodePath("../../Meshes/Ball")
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.190753, -9.01175, 4.95556, -5.7192 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.190753, -9.01175, 4.95556, 0.437573 )
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24239, 0, 1, 70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24238, 0, 1, 88.7888 )
 projection = 1
 size = 20.0
+near = 0.01
+far = 8192.0
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Player"]
-transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 100, 0, 0, -100.5 )
+transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 170, 0, 0, -170.5 )
 remote_path = NodePath("../../Meshes/Surface")
