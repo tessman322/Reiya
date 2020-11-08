@@ -37,7 +37,11 @@ rough = true
 [node name="Meshes" type="CSGCombiner" parent="."]
 
 [node name="Surface" type="CSGBox" parent="Meshes"]
+<<<<<<< HEAD
 transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 32.428, -9.01175, 4.95556, -32.0858 )
+=======
+transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 36.2431, -9.01175, 4.95556, -42.0576 )
+>>>>>>> 6b8807b (fixed the size and holes on orthogonal)
 
 [node name="Floor" type="CSGBox" parent="Meshes"]
 transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 34.9727, 0, 0, 0 )
@@ -128,5 +132,9 @@ near = 0.01
 far = 8192.0
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Player"]
+<<<<<<< HEAD
 transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 170, 0, 0, -170.5 )
+=======
+transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 190, 0, 0, -190.5 )
+>>>>>>> 6b8807b (fixed the size and holes on orthogonal)
 remote_path = NodePath("../../Meshes/Surface")
