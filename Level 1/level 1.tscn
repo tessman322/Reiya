@@ -133,7 +133,7 @@ remote_path = NodePath("../../Meshes/Ball")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.190753, -9.01175, 4.95556, 0.437573 )
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24238, 0, 2.60395, 88.7888 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24238, 0, 4, 88.789 )
 projection = 1
 size = 20.0
 near = 0.01
