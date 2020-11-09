@@ -1,36 +1,47 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://textures/TactilePaving002_2K_Roughness.jpg" type="Texture" id=1]
 [ext_resource path="res://Shaders/floor.tres" type="Material" id=2]
 [ext_resource path="res://Unnamed Hero/player scene.tscn" type="PackedScene" id=3]
-[ext_resource path="res://textures/TactilePaving002_2K_Color.jpg" type="Texture" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true
-albedo_color = Color( 0.0627451, 0.784314, 0.345098, 1 )
-albedo_texture = ExtResource( 1 )
+albedo_color = Color( 0.184314, 0.184314, 0.184314, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
-flags_unshaded = true
-albedo_color = Color( 0.113725, 0.239216, 0.533333, 1 )
-albedo_texture = ExtResource( 1 )
+albedo_color = Color( 0.0627451, 0.784314, 0.345098, 1 )
+emission_enabled = true
+emission = Color( 0.0627451, 0.784314, 0.345098, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="SpatialMaterial" id=3]
-flags_unshaded = true
-albedo_color = Color( 0.988235, 0.0117647, 0.0117647, 1 )
-albedo_texture = ExtResource( 4 )
+albedo_color = Color( 0.27451, 0.384314, 0.639216, 1 )
+emission_enabled = true
+emission = Color( 0.27451, 0.384314, 0.639216, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.988235, 0.0117647, 0.0117647, 1 )
+emission_enabled = true
+emission = Color( 0.988235, 0.0117647, 0.0117647, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="BoxShape" id=5]
 
 [sub_resource type="BoxShape" id=6]
 
-[sub_resource type="PhysicsMaterial" id=7]
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="PhysicsMaterial" id=8]
 friction = 100.0
 rough = true
 
-[sub_resource type="SphereShape" id=8]
+[sub_resource type="SphereShape" id=9]
 
 [node name="Spatial" type="Spatial"]
 
@@ -38,32 +49,33 @@ rough = true
 
 [node name="Surface" type="CSGBox" parent="Meshes"]
 transform = Transform( 50, 0, 0, 0, 15, 0, 0, 0, 32.428, -9.01175, 4.95556, -32.0858 )
+material = SubResource( 1 )
 
 [node name="Floor" type="CSGBox" parent="Meshes"]
-transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 34.9727, 0, 0, 0 )
+transform = Transform( 50, 0, 0, 0, 5, 0, 0, 0, 34.973, 0, -3, 0 )
 operation = 2
 material = ExtResource( 2 )
 
 [node name="Platform" type="CSGBox" parent="Meshes"]
 transform = Transform( -3, -7.54979e-08, 0, 4.52987e-07, -0.5, 0, 0, 0, 6, 9, 12, -5 )
 operation = 2
-material = SubResource( 1 )
+material = SubResource( 2 )
 
 [node name="Ball" type="CSGSphere" parent="Meshes"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 6.5, -7 )
 operation = 2
-material = SubResource( 2 )
+material = SubResource( 3 )
 
 [node name="Wall 4" type="CSGBox" parent="Meshes"]
 transform = Transform( -2.44381e-06, 0, 0.5, 0, 6, 0, -15, 0, -8.14603e-08, 15.5, 8.03154, 0 )
 operation = 2
-material = SubResource( 3 )
+material = SubResource( 4 )
 
 [node name="Floor" type="StaticBody" parent="."]
-transform = Transform( 50, 0, 0, 0, 2, 0, 0, 0, 34.9727, 0, 0, 0 )
+transform = Transform( 50, 0, 0, 0, 5, 0, 0, 0, 34.973, 0, -3, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Floor"]
 remote_path = NodePath("../../Meshes/Floor")
@@ -72,28 +84,28 @@ remote_path = NodePath("../../Meshes/Floor")
 transform = Transform( 15, 0, 0, 0, 6, 0, 0, 0, 0.5, 0, 4, 15.5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall1"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Wall2" type="StaticBody" parent="."]
 transform = Transform( -2.44381e-06, 0, 0.5, 0, 6, 0, -15, 0, -8.14603e-08, -15.5, 4, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall2"]
 transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, -4.54747e-13, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Wall3" type="StaticBody" parent="."]
 transform = Transform( 15, 0, 0, 0, 6, 0, 0, 0, 0.5, 0, 4, -15.5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, -2.27374e-13, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Wall4" type="StaticBody" parent="."]
 transform = Transform( -2.44381e-06, 0, 0.5, 0, 6, 0, -15, 0, -8.14603e-08, 15.5, 8.03154, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Wall4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, -2.27374e-13, 0, 1, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Wall4"]
 remote_path = NodePath("../../Meshes/Wall 4")
@@ -102,17 +114,17 @@ remote_path = NodePath("../../Meshes/Wall 4")
 transform = Transform( -3, -7.54979e-08, 0, 4.52987e-07, -0.5, 0, 0, 0, 6, 9, 12, -5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Platform"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Platform"]
 remote_path = NodePath("../../Meshes/Platform")
 
 [node name="Ball" type="StaticBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 6.5, -7 )
-physics_material_override = SubResource( 7 )
+physics_material_override = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Ball"]
 remote_path = NodePath("../../Meshes/Ball")
@@ -121,7 +133,7 @@ remote_path = NodePath("../../Meshes/Ball")
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.190753, -9.01175, 4.95556, 0.437573 )
 
 [node name="Camera" type="Camera" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24238, 0, 1, 88.7888 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 5.24238, 0, 4, 88.789 )
 projection = 1
 size = 20.0
 near = 0.01
